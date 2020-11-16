@@ -17,10 +17,10 @@
                             
                         </li>
                         <li>
-                            <a href="{{url('belijus2')}}">Produk</a>
+                            <a href="{{url('produk')}}">Produk</a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="{{url('testimoni2')}}">Kategori</a>
+                            <a class="js-arrow" href="{{url('kategori')}}">Kategori</a>
 
                                
                         <li class="has-sub">
