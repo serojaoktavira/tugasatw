@@ -108,7 +108,7 @@ label {
          <input class="form-control-lg" id="password" type="password" placeholder="Password" name="password">
        </div>
     <a href="#"><legend id="forgot-pass">Forgot password?</legend></a>
-    <a href="{{url('admin')}}" id="submit-btn" type="submit" name="submit">Login</a>
+    <a href="{{url('admin')}}" id="submit-btn" type="submit" name="submit"> Login </a>
         </form>
     </div>
 
