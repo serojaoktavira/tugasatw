@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\UserDetail;
 
 class UserController extends Controller{
 	function index(){
-		$data['list_user'] = User::all();
-		return view('user.index' , $data);
+		$data['list_user'] = User::withCount('produk')->get();
+		return view('admin/user.index' , $data);
 	}
 	function create(){
-		return view('user.create');
+		return view('admin/user.create');
 	}
 	function store(){
 		$user = new User;
@@ -19,15 +20,20 @@ class UserController extends Controller{
 		$user->password = bcrypt(request('password'));
 		$user->save();
 
-		return redirect('user')->with('succes' , 'Data Berhasil Ditambahkan');
+		$userDetail = new UserDetail;
+		$userDetail->id_user = $user->id;
+		$userDetail->no_hp = request('no_hp');
+		$userDetail->save();
+
+		return redirect('admin/user')->with('succes' , 'Data Berhasil Ditambahkan');
 	}
 	function show(User $user){
 		$data['user'] = $user;
-		return view ('user.show' , $data);
+		return view ('admin/user.show' , $data);
 	}
 	function edit(User $user){
 		$data['user'] = $user;
-		return view ('user.edit' , $data);
+		return view ('admin/user.edit' , $data);
 	}
 	function update(User $user){
 		$user->nama = request('nama');
@@ -36,11 +42,11 @@ class UserController extends Controller{
 		if(request('password')) $user->password = bcrypt(request('password'));
 		$user->save();
 
-		return redirect('user')->with('succes' , 'Data Berhasil Ditambahkan');
+		return redirect('admin/user')->with('succes' , 'Data Berhasil Ditambahkan');
 	}
 	function destroy(User $user){
 		$user->delete();
 
-		return redirect('user')->with('succes' , 'Data Berhasil Dihapus');
+		return redirect('admin/user')->with('succes' , 'Data Berhasil Dihapus');
 	}
 }
