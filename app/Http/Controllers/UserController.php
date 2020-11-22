@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-use App\Models\UserDetail;
+use App\Models\UserDetail; 
 
 class UserController extends Controller{
 	function index(){
